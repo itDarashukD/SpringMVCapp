@@ -1,5 +1,5 @@
 package by.darashuk.springCourse.config;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,14 +11,17 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-//Заменяем этим классом файл с настройками .XML
+/**
+ * @author Neil Alishev
+ */
 @Configuration
 @ComponentScan("by.darashuk.springCourse")
 @EnableWebMvc
-public class SpringConfig implements WebMvcConfigurer {//этот Интерфейс помогает настроить использование  Thymeleaf
+public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
+    @Autowired
     public SpringConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -41,7 +44,7 @@ public class SpringConfig implements WebMvcConfigurer {//этот Интерфе
     }
 
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {//этот метод помогает настроить использование  Thymeleaf
+    public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
