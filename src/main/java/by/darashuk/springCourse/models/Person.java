@@ -1,5 +1,4 @@
 package by.darashuk.springCourse.models;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -8,7 +7,7 @@ import javax.validation.constraints.Size;
 /**
  * @author Neil Alishev
  */
-@Valid
+
 public class Person {
     private int id;
 
