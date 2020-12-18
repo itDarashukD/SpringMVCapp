@@ -11,16 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-/**
- * @author Neil Alishev
- */
+
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
 
     private final PersonDAO personDAO;
 
-    @Autowired
+    @Autowired()
     public PeopleController(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
@@ -73,4 +71,4 @@ public class PeopleController {
         personDAO.delete(id);
         return "redirect:/people";
     }
-}
+} 
